@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class SearchTest {
+public class SearchDemoQaTest {
 
     @BeforeAll
     public static void beforeAll() {
