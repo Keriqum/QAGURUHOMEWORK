@@ -28,20 +28,16 @@ public class SearchDemoQaTest {
         $("#lastName").setValue("QAGURU");
         $("#userEmail").setValue("QAGURU@MAIL.RU");
         $("#userNumber").setValue("89001109090");
-        executeJavaScript("arguments[0].click();", $("#gender-radio-1"));
+        $("#genterWrapper").$(byText("Male")).click();
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1995");
         $(".react-datepicker__month-select").selectOption("May");
         $(".react-datepicker__day--013:not(.react-datepicker__day--outside-month)").click();
-        for (int i = 0; i < 3; i++) {
-            $("#subjectsContainer").click();
-            $("#subjectsInput").append("a");
-            $("#react-select-2-option-" + i).click();
-        }
-        executeJavaScript("arguments[0].click();", $("#hobbies-checkbox-1"));
-        executeJavaScript("arguments[0].click();", $("#hobbies-checkbox-2"));
-        executeJavaScript("arguments[0].click();", $("#hobbies-checkbox-3"));
-        File file = new File("src/main/resources/test.bmp");
+        $("#subjectsContainer").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("test.bmp");
         $("#currentAddress").setValue("QAGURU");
         $("#state").click();
