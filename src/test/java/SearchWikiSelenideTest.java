@@ -16,14 +16,22 @@ public class SearchWikiSelenideTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
-    void GithubWikiTest() {
+    void githubWikiTest() {
         open("https://github.com/codeborne/selenide");
-        $(linkText("Wiki")).click();
+        $("#wiki-tab").click();
         $(".markdown-body").find(byText("Soft assertions")).shouldHave(text("Soft assertions")).click();
-        $((withText("Using JUnit5 extend test class"))).shouldHave(text("Using JUnit5 extend test class"));
-        }
+        $("#wiki-body").shouldHave(text("@ExtendWith({SoftAssertsExtension.class})\n" +
+                "class Tests {\n" +
+                "  @Test\n" +
+                "  void test() {\n" +
+                "    Configuration.assertionMode = SOFT;\n" +
+                "    open(\"page.html\");\n" +
+                "\n" +
+                "    $(\"#first\").should(visible).click();\n" +
+                "    $(\"#second\").should(visible).click();\n" +
+                "  }\n" +
+                "}"));        }
     }
